@@ -2,11 +2,12 @@ import { Ionicons } from "@expo/vector-icons";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useCallback, useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { TouchableOpacity } from "react-native";
+import styled from "styled-components/native";
 
 SplashScreen.preventAutoHideAsync();
 
-const Movie = () => {
+const Movie = ({ navigation: { navigate } }) => {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
@@ -33,13 +34,18 @@ const Movie = () => {
   if (!isReady) return null;
 
   return (
-    <View
-      className={"flex-1 justify-center items-center"}
+    <TouchableOpacity
+      className="flex-1 justify-center items-center"
+      onPress={() => navigate("Stack", { screen: "Three" })}
       onLayout={onLayoutRootView}
     >
-      <Text>Movie</Text>
-    </View>
+      <Content>Movie</Content>
+    </TouchableOpacity>
   );
 };
 
 export default Movie;
+
+const Content = styled.Text`
+  color: ${({ theme }) => theme.colors.mainColor};
+`;

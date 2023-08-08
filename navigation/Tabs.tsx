@@ -1,6 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { useColorScheme } from "react-native";
 import Movie from "../screens/Movie";
 import Search from "../screens/Search";
 import Tv from "../screens/Tv";
@@ -8,9 +7,7 @@ import Tv from "../screens/Tv";
 const Tab = createBottomTabNavigator();
 
 export function Tabs() {
-  const colorScheme = useColorScheme();
   // https://www.nativewind.dev/core-concepts/dark-mode
-  const isDark = colorScheme === "dark";
 
   return (
     <Tab.Navigator
